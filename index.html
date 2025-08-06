@@ -16,7 +16,7 @@
             --card-background: rgba(22, 28, 41, 0.6);
             --card-border-color: rgba(56, 62, 74, 0.5);
             --card-hover-border-color: rgba(0, 198, 255, 0.8);
-            --game-image-bg: #121212; /* Seamless background color for images */
+            --game-image-bg: #121212; 
         }
 
         body {
@@ -32,7 +32,7 @@
             align-items: center;
         }
         
-        /* --- NEW: Animated Starfield & Meteors Background --- */
+        /* --- NEW: Updated Background --- */
         .background {
             position: fixed;
             top: 0;
@@ -41,6 +41,8 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
+            /* New dark purple to black gradient from the bottom */
+            background: linear-gradient(to top, #190b28 0%, #010409 75%);
         }
 
         /* Generated star positions for a dense, random look */
@@ -72,22 +74,6 @@
             to { transform: translateY(-2000px); }
         }
 
-        .meteor {
-            position: absolute;
-            background: linear-gradient(-45deg, var(--secondary-color), rgba(0, 0, 255, 0));
-            border-radius: 999px;
-            filter: drop-shadow(0 0 6px var(--secondary-color));
-            animation: meteor-fall 10s linear infinite;
-        }
-        .meteor:nth-of-type(1) { top: -100px; left: 40%; animation-delay: 0.8s; }
-        .meteor:nth-of-type(2) { top: -100px; left: 70%; animation-delay: 5.2s; }
-
-        @keyframes meteor-fall {
-            0% { transform: translate(0, 0); opacity: 1; }
-            70% { opacity: 1; }
-            100% { transform: translate(-50vw, 50vh); opacity: 0; }
-        }
-
         .container {
             width: 90%;
             max-width: 1200px;
@@ -100,7 +86,7 @@
         /* Header Section */
         .header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem; /* Increased margin to push title down */
         }
 
         .header h1 {
@@ -123,11 +109,10 @@
         .game-section {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 2.5rem; /* Increased gap for more spacing */
             align-items: stretch; 
         }
 
-        /* NEW: Styles for the clickable card wrapper */
         .game-card-link {
             display: flex;
             text-decoration: none;
@@ -154,14 +139,14 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            transition: border-color 0.3s ease-out; /* Smooth border color transition */
+            transition: border-color 0.3s ease-out; 
         }
         
         .game-card .image-container {
             width: 100%;
-            height: 380px; 
+            height: 320px; /* NEW: Reduced height for smaller cards */
             overflow: hidden;
-            background-color: var(--game-image-bg); /* Seamless background */
+            background-color: var(--game-image-bg); 
             border-bottom: 1px solid var(--card-border-color);
             padding: 10px; 
             box-sizing: border-box;
@@ -264,8 +249,6 @@
         <div class="stars"></div>
         <div class="stars2"></div>
         <div class="stars3"></div>
-        <div class="meteor" style="height: 1px; width: 70px;"></div>
-        <div class="meteor" style="height: 2px; width: 120px;"></div>
     </div>
     
     <div class="container">
