@@ -32,7 +32,6 @@
             align-items: center;
         }
         
-        /* --- NEW: Updated Background --- */
         .background {
             position: fixed;
             top: 0;
@@ -41,8 +40,8 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            /* New dark purple to black gradient from the bottom */
-            background: linear-gradient(to top, #190b28 0%, #010409 75%);
+            /* NEW: Gradient is now lower on the screen */
+            background: linear-gradient(to top, #190b28 0%, #010409 40%);
         }
 
         /* Generated star positions for a dense, random look */
@@ -86,7 +85,7 @@
         /* Header Section */
         .header {
             text-align: center;
-            margin-bottom: 5rem; /* Increased margin to push title down */
+            margin-bottom: 3rem; /* NEW: Reduced margin to move cards up */
         }
 
         .header h1 {
@@ -109,7 +108,7 @@
         .game-section {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem; /* Increased gap for more spacing */
+            gap: 2.5rem; 
             align-items: stretch; 
         }
 
@@ -144,7 +143,7 @@
         
         .game-card .image-container {
             width: 100%;
-            height: 320px; /* NEW: Reduced height for smaller cards */
+            height: 320px; 
             overflow: hidden;
             background-color: var(--game-image-bg); 
             border-bottom: 1px solid var(--card-border-color);
