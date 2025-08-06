@@ -32,6 +32,7 @@
             align-items: center;
         }
         
+        /* --- NEW: Rotational Starfield Background --- */
         .background {
             position: fixed;
             top: 0;
@@ -40,37 +41,51 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            /* NEW: Gradient is now lower on the screen */
             background: linear-gradient(to top, #190b28 0%, #010409 40%);
         }
 
-        /* Generated star positions for a dense, random look */
-        .stars, .stars2, .stars3 {
+        .stars-container {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 1px;
+            top: 50%;
+            left: 50%;
             height: 1px;
-            background: transparent;
-        }
-        .stars { 
-            animation: animate-stars 50s linear infinite;
-            box-shadow: 622px 1439px #FFF, 1786px 1698px #FFF, 1530px 1087px #FFF, 157px 1148px #FFF, 1146px 668px #FFF, 1388px 339px #FFF, 420px 1867px #FFF, 549px 1352px #FFF, 1693px 1435px #FFF, 1597px 497px #FFF, 112px 109px #FFF, 1026px 1130px #FFF, 1630px 1586px #FFF, 1374px 1740px #FFF, 128px 1827px #FFF, 1500px 1111px #FFF, 762px 1916px #FFF, 1642px 789px #FFF, 103px 1195px #FFF, 284px 123px #FFF; 
-        }
-        .stars2 { 
-            animation: animate-stars 100s linear infinite;
-            box-shadow: 1774px 1385px #FFF, 712px 1709px #FFF, 836px 956px #FFF, 53px 768px #FFF, 893px 1825px #FFF, 1930px 584px #FFF, 1708px 1018px #FFF, 382px 765px #FFF, 1149px 1656px #FFF, 1391px 933px #FFF, 1142px 1136px #FFF, 1851px 742px #FFF, 125px 443px #FFF, 1205px 129px #FFF, 1029px 1279px #FFF, 1863px 1275px #FFF, 1269px 743px #FFF, 1270px 1345px #FFF, 755px 1400px #FFF, 155px 1059px #FFF;
-        }
-        .stars3 { 
-            animation: animate-stars 150s linear infinite;
-            box-shadow: 1477px 690px #FFF, 24px 1877px #FFF, 1595px 338px #FFF, 1357px 1113px #FFF, 882px 1239px #FFF, 1715px 409px #FFF, 477px 1974px #FFF, 133px 1228px #FFF, 942px 163px #FFF, 1045px 1112px #FFF, 1823px 1782px #FFF, 1106px 1830px #FFF, 1504px 126px #FFF, 937px 439px #FFF, 34px 94px #FFF, 1492px 1904px #FFF, 1235px 125px #FFF, 773px 143px #FFF, 461px 110px #FFF, 1531px 1735px #FFF;
+            width: 1px;
         }
 
-        @keyframes animate-stars {
-            from { transform: translateY(0px); }
-            to { transform: translateY(-2000px); }
+        .stars, .stars2, .stars3 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 50%;
+            background-color: white;
+            animation: rotate-stars linear infinite;
+        }
+
+        /* Layer 1: Small, dense, slow */
+        .stars {
+            width: 1px;
+            height: 1px;
+            animation-duration: 400s;
+            box-shadow: 1058px -398px #FFF, 843px -144px #FFF, 1269px 768px #FFF, -450px -109px #FFF, -129px -398px #FFF, 1024px 338px #FFF, 1374px 1000px #FFF, 1318px -1316px #FFF, 1283px 1279px #FFF, -1355px 1238px #FFF, 715px -1232px #FFF, -72px -1106px #FFF, -1176px -505px #FFF, -642px 648px #FFF, -140px 128px #FFF, -1316px -132px #FFF, -114px 1002px #FFF, -90px 102px #FFF, 1302px -1254px #FFF, 755px -120px #FFF, 110px -1134px #FFF, 959px 1202px #FFF, 621px 135px #FFF, 429px 127px #FFF, 104px 1261px #FFF, -1274px -35px #FFF, 713px -42px #FFF, -100px -107px #FFF, 1152px 90px #FFF, 1083px -138px #FFF;
+        }
+        /* Layer 2: Medium size, less dense, faster */
+        .stars2 {
+            width: 2px;
+            height: 2px;
+            animation-duration: 300s;
+            box-shadow: 111px -1320px #FFF, -126px 871px #FFF, 1184px -101px #FFF, -47px -132px #FFF, 128px 1018px #FFF, 1022px 147px #FFF, -138px -131px #FFF, -253px -447px #FFF, 115px -401px #FFF, 1032px 1238px #FFF, 29px 1391px #FFF, 808px 87px #FFF, 1253px 803px #FFF, -1331px -1160px #FFF, -243px -1338px #FFF, 107px 10px #FFF, -1141px -377px #FFF, 1015px 1046px #FFF, -1371px -121px #FFF, 131px 1195px #FFF;
+        }
+        /* Layer 3: Largest size, sparse, fastest */
+        .stars3 {
+            width: 3px;
+            height: 3px;
+            animation-duration: 200s;
+            box-shadow: 118px 1056px #FFF, 1076px -270px #FFF, -1221px -1242px #FFF, 856px -1316px #FFF, -177px 1159px #FFF, 34px -949px #FFF, -1363px 1280px #FFF, -329px 1133px #FFF, -392px 1373px #FFF, 1205px -120px #FFF;
+        }
+
+        @keyframes rotate-stars {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .container {
@@ -85,7 +100,7 @@
         /* Header Section */
         .header {
             text-align: center;
-            margin-bottom: 3rem; /* NEW: Reduced margin to move cards up */
+            margin-bottom: 3rem; 
         }
 
         .header h1 {
@@ -245,9 +260,11 @@
 </head>
 <body>
     <div class="background">
-        <div class="stars"></div>
-        <div class="stars2"></div>
-        <div class="stars3"></div>
+        <div class="stars-container">
+            <div class="stars"></div>
+            <div class="stars2"></div>
+            <div class="stars3"></div>
+        </div>
     </div>
     
     <div class="container">
