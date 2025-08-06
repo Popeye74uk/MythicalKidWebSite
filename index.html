@@ -3,181 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>Mythical Kid | Game Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* --- Basic Setup & Theming --- */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* Prevents scrollbars from the canvas */
-            background-color: #000000;
-            color: #FFFFFF;
-            font-family: 'Space Mono', monospace;
+        :root {
+            --background-color: #0d0c1d;
+            --primary-color: #6a0dad;
+            --secondary-color: #00c6ff;
+            --text-color: #e0e0e0;
+            --card-background: rgba(22, 21, 46, 0.6);
+            --card-border-color: rgba(106, 13, 173, 0.4);
+            --card-hover-border-color: rgba(0, 198, 255, 0.7);
         }
 
-        /* --- Animated Background Canvas --- */
-        #background-canvas {
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Animated Background */
+        .background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Places the canvas behind the text content */
+            z-index: -1;
+            background: linear-gradient(-45deg, #0d0c1d, #1a1a3a, var(--primary-color), var(--secondary-color));
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
         }
 
-        /* --- Centered Content --- */
-        .content-container {
-            position: relative;
-            z-index: 2; /* Ensures text is on top of the canvas */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+            margin: 0;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* Game Panels Section */
+        .game-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            perspective: 1000px;
+        }
+
+        .game-card {
+            background: var(--card-background);
+            border: 1px solid var(--card-border-color);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(3deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            border-color: var(--card-hover-border-color);
+        }
+        
+        .game-card .image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .game-card .image-container img {
             width: 100%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .game-card:hover .image-container img {
+            transform: scale(1.05);
+        }
+
+        .game-card .card-content {
+            padding: 1.5rem;
+        }
+
+        .game-card h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .game-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            min-height: 80px; /* Ensures consistent card height */
+        }
+
+        .play-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
+        }
+
+        .play-button:hover {
+            background: var(--secondary-color);
+            color: var(--background-color);
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 198, 255, 0.8);
+        }
+        
+        /* About Section */
+        .about-section {
             text-align: center;
-        }
-
-        /* --- Text Styling & Animations --- */
-        h1 {
-            font-size: 4rem; /* Responsive font size */
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            /* Cool pulse animation */
-            animation: pulse 4s infinite ease-in-out;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            opacity: 0.8;
-            font-weight: 400;
+            margin-top: 6rem;
+            padding: 2rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
         }
         
-        /* The fun blinking cursor effect for the subheading */
-        .blinking-cursor::after {
-            content: '_';
-            animation: blink 1s step-end infinite;
+        .about-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
-        /* --- Keyframe Animations --- */
-        @keyframes pulse {
-            0% {
-                opacity: 0.6;
-                transform: scale(0.98);
+        /* Footer Section */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .game-section {
+                grid-template-columns: 1fr;
             }
-            50% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 0.6;
-                transform: scale(0.98);
+             .game-card p {
+                min-height: auto;
             }
         }
         
-        @keyframes blink {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-        }
-
-        /* --- Responsive Design for Smaller Screens --- */
         @media (max-width: 600px) {
-            h1 {
+            .header h1 {
                 font-size: 2.5rem;
             }
-            p {
-                font-size: 1rem;
-            }
         }
-
     </style>
+    <!-- FontAwesome for social icons -->
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <div class="background"></div>
+    <div class="container">
+        <header class="header">
+            <h1>Mythical Kid</h1>
+            <p class="subtitle">A Collection of Interactive Web Games</p>
+        </header>
 
-    <canvas id="background-canvas"></canvas>
+        <section class="game-section">
+            <!-- Sudoku Game Panel -->
+            <div class="game-card">
+                <div class="image-container">
+                    <img src="sudoku.png" alt="Sudoku Game Screenshot">
+                </div>
+                <div class="card-content">
+                    <h2>Sudoku Generator</h2>
+                    <p>A classic logic puzzle with a modern twist. Generate unique Sudoku puzzles with multiple difficulty levels, helper features, and a sleek, user-friendly interface.</p>
+                    <a href="https://popeye74uk.github.io/SudokuGenerator/" class="play-button">Play Sudoku</a>
+                </div>
+            </div>
 
-    <div class="content-container">
-        <h1>Coming Soon</h1>
-        <p class="blinking-cursor">Our new site is under construction</p>
+            <!-- Maze Game Panel -->
+            <div class="game-card">
+                <div class="image-container">
+                    <img src="maze.png" alt="Maze Game Screenshot">
+                </div>
+                <div class="card-content">
+                    <h2>Maze Generator</h2>
+                    <p>Get lost in a world of complex mazes. Using various generation algorithms, this game creates endless, challenging mazes for you to solve. Can you find the exit?</p>
+                    <a href="https://popeye74uk.github.io/MazeGenerator/" class="play-button">Play Maze</a>
+                </div>
+            </div>
+
+            <!-- Word Search Panel -->
+            <div class="game-card">
+                <div class="image-container">
+                    <img src="wordsearch.png" alt="Word Search Game Screenshot">
+                </div>
+                <div class="card-content">
+                    <h2>Word Search</h2>
+                    <p>A fun and challenging word search generator. Find themed words in a grid of letters, with multiple difficulty settings and a clean, interactive design.</p>
+                    <a href="https://popeye74uk.github.io/WordSearch/" class="play-button">Play Word Search</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>About Me</h2>
+            <p>Hi, I'm a passionate web developer with a love for creating interactive and engaging online experiences. This collection of games is a showcase of my skills in front-end development, JavaScript, and UI/UX design. I hope you enjoy playing them as much as I enjoyed building them!</p>
+        </section>
     </div>
 
-    <script>
-        const canvas = document.getElementById('background-canvas');
-        const ctx = canvas.getContext('2d');
-
-        let width, height, stars;
-
-        function init() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-
-            stars = [];
-            for (let i = 0; i < 150; i++) {
-                stars.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    radius: Math.random() * 1.5,
-                    vx: (Math.random() - 0.5) * 0.2, // Slow velocity
-                    vy: (Math.random() - 0.5) * 0.2
-                });
-            }
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-            
-            ctx.beginPath();
-            for (let i = 0; i < stars.length; i++) {
-                let s = stars[i];
-                ctx.moveTo(s.x, s.y);
-                ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2, true);
-            }
-            ctx.fill();
-
-            update();
-        }
-
-        function update() {
-            for (let i = 0; i < stars.length; i++) {
-                let s = stars[i];
-                s.x += s.vx;
-                s.y += s.vy;
-
-                // Wrap stars around the screen
-                if (s.x < 0) s.x = width;
-                if (s.x > width) s.x = 0;
-                if (s.y < 0) s.y = height;
-                if (s.y > height) s.y = 0;
-            }
-        }
-
-        function animate() {
-            draw();
-            requestAnimationFrame(animate);
-        }
-
-        // Initialize and start animation
-        init();
-        animate();
-
-        // Re-initialize on window resize to make it responsive
-        window.addEventListener('resize', init);
-    </script>
+    <footer class="footer">
+        <div class="social-links">
+            <a href="http://mythicalkid.co.uk/" target="_blank" title="My Website"><i class="fas fa-globe"></i></a>
+            <a href="https://github.com/Popeye74UK" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <!-- Add other social links here -->
+        </div>
+        <p>&copy; 2024 Mythical Kid. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
