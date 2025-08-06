@@ -9,13 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --background-color: #0d0c1d;
+            --background-color: #020212;
             --primary-color: #6a0dad;
             --secondary-color: #00c6ff;
             --text-color: #e0e0e0;
-            --card-background: rgba(22, 21, 46, 0.6);
-            --card-border-color: rgba(106, 13, 173, 0.4);
-            --card-hover-border-color: rgba(0, 198, 255, 0.7);
+            --card-background: rgba(10, 10, 35, 0.5);
+            --card-border-color: rgba(106, 13, 173, 0.3);
+            --card-hover-border-color: rgba(0, 198, 255, 0.8);
+            --star-color: rgba(255, 255, 255, 0.8);
         }
 
         body {
@@ -31,7 +32,7 @@
             align-items: center;
         }
         
-        /* Animated Background */
+        /* --- Animated Starfield Background --- */
         .background {
             position: fixed;
             top: 0;
@@ -39,15 +40,47 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(-45deg, #0d0c1d, #1a1a3a, var(--primary-color), var(--secondary-color));
-            background-size: 400% 400%;
-            animation: gradientBG 20s ease infinite;
+            background: radial-gradient(ellipse at bottom, #0a0a23 0%, #020212 100%);
+            overflow: hidden;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes move-stars {
+            from {transform: translateY(0px);}
+            to {transform: translateY(-2000px);}
+        }
+
+        .stars, .stars2, .stars3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Helper function to generate random box-shadows for stars */
+        /* I've pre-generated these for you. */
+        .stars {
+            background: transparent;
+            z-index: 10;
+            animation: move-stars 150s linear infinite;
+            box-shadow: 1736px 1469px var(--star-color), 1362px 1383px var(--star-color), 95px 1239px var(--star-color), 1259px 1213px var(--star-color), 64px 384px var(--star-color), 1475px 899px var(--star-color), 1629px 406px var(--star-color), 127px 1134px var(--star-color), 1252px 131px var(--star-color), 1146px 1309px var(--star-color), 290px 412px var(--star-color), 539px 1211px var(--star-color), 1968px 439px var(--star-color), 28px 1390px var(--star-color), 754px 1799px var(--star-color), 926px 1618px var(--star-color), 1908px 653px var(--star-color), 72px 1494px var(--star-color), 1838px 1293px var(--star-color), 1436px 1332px var(--star-color), 509px 1916px var(--star-color), 1478px 339px var(--star-color), 138px 182px var(--star-color), 1888px 1375px var(--star-color), 1118px 478px var(--star-color), 1253px 1531px var(--star-color), 314px 197px var(--star-color), 1361px 1957px var(--star-color), 1338px 1018px var(--star-color), 1800px 1023px var(--star-color);
+        }
+
+        .stars2 {
+            background: transparent;
+            z-index: 20;
+            animation: move-stars 100s linear infinite;
+            box-shadow: 1257px 1475px var(--star-color), 1985px 528px var(--star-color), 1202px 1919px var(--star-color), 839px 1894px var(--star-color), 1184px 1291px var(--star-color), 1479px 1389px var(--star-color), 513px 1903px var(--star-color), 1583px 1317px var(--star-color), 303px 1235px var(--star-color), 1690px 1398px var(--star-color), 143px 174px var(--star-color), 1373px 1622px var(--star-color), 1436px 86px var(--star-color), 499px 680px var(--star-color), 830px 1423px var(--star-color), 221px 307px var(--star-color), 1213px 129px var(--star-color), 914px 1195px var(--star-color), 1950px 1445px var(--star-color), 1937px 729px var(--star-color), 793px 127px var(--star-color), 146px 1105px var(--star-color), 1930px 1253px var(--star-color), 1515px 449px var(--star-color), 748px 1253px var(--star-color), 1406px 376px var(--star-color), 1018px 1205px var(--star-color), 73px 1133px var(--star-color), 850px 25px var(--star-color), 109px 1131px var(--star-color);
+        }
+
+        .stars3 {
+            background: transparent;
+            z-index: 30;
+            animation: move-stars 75s linear infinite;
+            box-shadow: 1845px 1740px var(--star-color), 107px 1150px var(--star-color), 1030px 1827px var(--star-color), 1934px 1146px var(--star-color), 84px 185px var(--star-color), 1739px 311px var(--star-color), 359px 1937px var(--star-color), 384px 1143px var(--star-color), 1212px 1490px var(--star-color), 1038px 1211px var(--star-color), 1749px 490px var(--star-color), 146px 1298px var(--star-color), 1684px 343px var(--star-color), 430px 528px var(--star-color), 863px 1812px var(--star-color), 1813px 453px var(--star-color), 1560px 456px var(--star-color), 1204px 1563px var(--star-color), 1916px 1324px var(--star-color), 233px 1970px var(--star-color), 1705px 1424px var(--star-color), 1362px 1290px var(--star-color), 812px 1055px var(--star-color), 1901px 167px var(--star-color), 1391px 246px var(--star-color), 1400px 1073px var(--star-color), 38px 1823px var(--star-color), 1539px 1404px var(--star-color), 832px 1407px var(--star-color), 585px 1980px var(--star-color);
         }
 
         .container {
@@ -55,6 +88,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem 1rem;
+            position: relative;
+            z-index: 40;
         }
 
         /* Header Section */
@@ -68,7 +103,7 @@
             font-size: 3.5rem;
             font-weight: 700;
             color: #fff;
-            text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+            text-shadow: 0 0 5px #fff, 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 30px var(--primary-color);
             margin: 0;
         }
 
@@ -94,31 +129,33 @@
             overflow: hidden;
             transition: all 0.3s ease-out;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
             transform-style: preserve-3d;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .game-card:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(3deg);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            transform: translateY(-10px);
             border-color: var(--card-hover-border-color);
+            box-shadow: 0 0 25px rgba(0, 198, 255, 0.5), 0 15px 30px rgba(0,0,0,0.4);
         }
         
-        .game-card .image-container {
+        .game-card .iframe-container {
             width: 100%;
-            height: 200px;
+            aspect-ratio: 16 / 10;
             overflow: hidden;
+            background-color: #000;
         }
         
-        .game-card .image-container img {
+        .game-card .iframe-container iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .game-card:hover .image-container img {
-            transform: scale(1.05);
+            border: none;
+            /* The following makes the iframe content smaller, acting like a preview */
+            transform: scale(0.85);
+            transform-origin: 0 0;
+            width: 117.6%; /* 100 / 0.85 */
+            height: 117.6%; /* 100 / 0.85 */
         }
 
         .game-card .card-content {
@@ -210,11 +247,15 @@
         }
     </style>
     <!-- FontAwesome for social icons -->
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="background"></div>
+    <div class="background">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+    
     <div class="container">
         <header class="header">
             <h1>Mythical Kid</h1>
@@ -224,37 +265,37 @@
         <section class="game-section">
             <!-- Sudoku Game Panel -->
             <div class="game-card">
-                <div class="image-container">
-                    <img src="sudoku.png" alt="Sudoku Game Screenshot">
+                <div class="iframe-container">
+                    <iframe src="https://popeye74uk.github.io/SudokuGenerator/" title="Sudoku Game Preview" scrolling="no"></iframe>
                 </div>
                 <div class="card-content">
                     <h2>Sudoku Generator</h2>
                     <p>A classic logic puzzle with a modern twist. Generate unique Sudoku puzzles with multiple difficulty levels, helper features, and a sleek, user-friendly interface.</p>
-                    <a href="https://popeye74uk.github.io/SudokuGenerator/" class="play-button">Play Sudoku</a>
+                    <a href="https://popeye74uk.github.io/SudokuGenerator/" target="_blank" class="play-button">Play Fullscreen</a>
                 </div>
             </div>
 
             <!-- Maze Game Panel -->
             <div class="game-card">
-                <div class="image-container">
-                    <img src="maze.png" alt="Maze Game Screenshot">
+                <div class="iframe-container">
+                    <iframe src="https://popeye74uk.github.io/MazeGenerator/" title="Maze Game Preview" scrolling="no"></iframe>
                 </div>
                 <div class="card-content">
                     <h2>Maze Generator</h2>
                     <p>Get lost in a world of complex mazes. Using various generation algorithms, this game creates endless, challenging mazes for you to solve. Can you find the exit?</p>
-                    <a href="https://popeye74uk.github.io/MazeGenerator/" class="play-button">Play Maze</a>
+                    <a href="https://popeye74uk.github.io/MazeGenerator/" target="_blank" class="play-button">Play Fullscreen</a>
                 </div>
             </div>
 
             <!-- Word Search Panel -->
             <div class="game-card">
-                <div class="image-container">
-                    <img src="wordsearch.png" alt="Word Search Game Screenshot">
+                <div class="iframe-container">
+                    <iframe src="https://popeye74uk.github.io/WordSearch/" title="Word Search Game Preview" scrolling="no"></iframe>
                 </div>
                 <div class="card-content">
                     <h2>Word Search</h2>
                     <p>A fun and challenging word search generator. Find themed words in a grid of letters, with multiple difficulty settings and a clean, interactive design.</p>
-                    <a href="https://popeye74uk.github.io/WordSearch/" class="play-button">Play Word Search</a>
+                    <a href="https://popeye74uk.github.io/WordSearch/" target="_blank" class="play-button">Play Fullscreen</a>
                 </div>
             </div>
         </section>
@@ -269,7 +310,8 @@
         <div class="social-links">
             <a href="http://mythicalkid.co.uk/" target="_blank" title="My Website"><i class="fas fa-globe"></i></a>
             <a href="https://github.com/Popeye74UK" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <!-- Add other social links here -->
+            <!-- Add other social links here, for example: -->
+            <!-- <a href="https://www.linkedin.com/in/yourprofile/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a> -->
         </div>
         <p>&copy; 2024 Mythical Kid. All Rights Reserved.</p>
     </footer>
