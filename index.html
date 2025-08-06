@@ -16,6 +16,7 @@
             --card-background: rgba(22, 28, 41, 0.6);
             --card-border-color: rgba(56, 62, 74, 0.5);
             --card-hover-border-color: rgba(0, 198, 255, 0.8);
+            --game-image-bg: #121212; /* Seamless background color for images */
         }
 
         body {
@@ -31,7 +32,7 @@
             align-items: center;
         }
         
-        /* --- Animated Background --- */
+        /* --- NEW: Animated Starfield & Meteors Background --- */
         .background {
             position: fixed;
             top: 0;
@@ -42,23 +43,50 @@
             overflow: hidden;
         }
 
-        .background::before {
-            content: '';
+        /* Generated star positions for a dense, random look */
+        .stars, .stars2, .stars3 {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 50vh;
-            background: radial-gradient(ellipse at top, rgba(106, 13, 173, 0.15) 0%, transparent 70%);
-            animation: pulse-glow 10s infinite ease-in-out;
+            right: 0;
+            bottom: 0;
+            width: 1px;
+            height: 1px;
+            background: transparent;
+        }
+        .stars { 
+            animation: animate-stars 50s linear infinite;
+            box-shadow: 622px 1439px #FFF, 1786px 1698px #FFF, 1530px 1087px #FFF, 157px 1148px #FFF, 1146px 668px #FFF, 1388px 339px #FFF, 420px 1867px #FFF, 549px 1352px #FFF, 1693px 1435px #FFF, 1597px 497px #FFF, 112px 109px #FFF, 1026px 1130px #FFF, 1630px 1586px #FFF, 1374px 1740px #FFF, 128px 1827px #FFF, 1500px 1111px #FFF, 762px 1916px #FFF, 1642px 789px #FFF, 103px 1195px #FFF, 284px 123px #FFF; 
+        }
+        .stars2 { 
+            animation: animate-stars 100s linear infinite;
+            box-shadow: 1774px 1385px #FFF, 712px 1709px #FFF, 836px 956px #FFF, 53px 768px #FFF, 893px 1825px #FFF, 1930px 584px #FFF, 1708px 1018px #FFF, 382px 765px #FFF, 1149px 1656px #FFF, 1391px 933px #FFF, 1142px 1136px #FFF, 1851px 742px #FFF, 125px 443px #FFF, 1205px 129px #FFF, 1029px 1279px #FFF, 1863px 1275px #FFF, 1269px 743px #FFF, 1270px 1345px #FFF, 755px 1400px #FFF, 155px 1059px #FFF;
+        }
+        .stars3 { 
+            animation: animate-stars 150s linear infinite;
+            box-shadow: 1477px 690px #FFF, 24px 1877px #FFF, 1595px 338px #FFF, 1357px 1113px #FFF, 882px 1239px #FFF, 1715px 409px #FFF, 477px 1974px #FFF, 133px 1228px #FFF, 942px 163px #FFF, 1045px 1112px #FFF, 1823px 1782px #FFF, 1106px 1830px #FFF, 1504px 126px #FFF, 937px 439px #FFF, 34px 94px #FFF, 1492px 1904px #FFF, 1235px 125px #FFF, 773px 143px #FFF, 461px 110px #FFF, 1531px 1735px #FFF;
         }
 
-        @keyframes pulse-glow {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.8; }
+        @keyframes animate-stars {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-2000px); }
         }
 
+        .meteor {
+            position: absolute;
+            background: linear-gradient(-45deg, var(--secondary-color), rgba(0, 0, 255, 0));
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px var(--secondary-color));
+            animation: meteor-fall 10s linear infinite;
+        }
+        .meteor:nth-of-type(1) { top: -100px; left: 40%; animation-delay: 0.8s; }
+        .meteor:nth-of-type(2) { top: -100px; left: 70%; animation-delay: 5.2s; }
+
+        @keyframes meteor-fall {
+            0% { transform: translate(0, 0); opacity: 1; }
+            70% { opacity: 1; }
+            100% { transform: translate(-50vw, 50vh); opacity: 0; }
+        }
 
         .container {
             width: 90%;
@@ -96,7 +124,23 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            align-items: stretch; /* Ensures all cards stretch to the same height */
+            align-items: stretch; 
+        }
+
+        /* NEW: Styles for the clickable card wrapper */
+        .game-card-link {
+            display: flex;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 15px;
+            transition: all 0.3s ease-out;
+        }
+        .game-card-link:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(0, 198, 255, 0.5), 0 15px 30px rgba(0,0,0,0.4);
+        }
+        .game-card-link:hover .game-card {
+             border-color: var(--card-hover-border-color);
         }
 
         .game-card {
@@ -104,40 +148,38 @@
             border: 1px solid var(--card-border-color);
             border-radius: 15px;
             overflow: hidden;
-            transition: all 0.3s ease-out;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             display: flex;
             flex-direction: column;
-        }
-
-        .game-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--card-hover-border-color);
-            box-shadow: 0 0 25px rgba(0, 198, 255, 0.5), 0 15px 30px rgba(0,0,0,0.4);
+            width: 100%;
+            transition: border-color 0.3s ease-out; /* Smooth border color transition */
         }
         
         .game-card .image-container {
             width: 100%;
-            height: 380px; /* NEW: Increased height to fit the tallest image */
+            height: 380px; 
             overflow: hidden;
-            background-color: #000;
+            background-color: var(--game-image-bg); /* Seamless background */
             border-bottom: 1px solid var(--card-border-color);
-            padding: 10px; /* Adds some breathing room around the contained image */
+            padding: 10px; 
             box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .game-card .image-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* CHANGED: This ensures the full image is always visible */
+            object-fit: contain; 
             object-position: center; 
             transition: transform 0.4s ease;
         }
         
-        .game-card:hover .image-container img {
-            transform: scale(1.03); /* Slightly reduced hover effect for contained images */
+        .game-card-link:hover .image-container img {
+            transform: scale(1.03); 
         }
 
         .game-card .card-content {
@@ -174,10 +216,9 @@
             align-self: flex-start;
         }
 
-        .play-button:hover {
+        .game-card-link:hover .play-button {
             background: var(--secondary-color);
             color: var(--background-color);
-            transform: scale(1.05);
             box-shadow: 0 0 25px rgba(0, 198, 255, 0.8);
         }
         
@@ -204,25 +245,10 @@
             opacity: 0.7;
         }
 
-        .social-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin: 0 1rem;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--secondary-color);
-        }
-
         /* Responsive Design */
         @media (max-width: 992px) {
             .game-section {
                 grid-template-columns: 1fr;
-            }
-             .game-card p {
-                min-height: auto;
             }
         }
         
@@ -232,11 +258,15 @@
             }
         }
     </style>
-    <!-- FontAwesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="background"></div>
+    <div class="background">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+        <div class="meteor" style="height: 1px; width: 70px;"></div>
+        <div class="meteor" style="height: 2px; width: 120px;"></div>
+    </div>
     
     <div class="container">
         <header class="header">
@@ -246,40 +276,46 @@
 
         <section class="game-section">
             <!-- Sudoku Game Panel -->
-            <div class="game-card">
-                <div class="image-container">
-                    <img src="sudoku.png" alt="Sudoku Game Screenshot">
+            <a href="https://popeye74uk.github.io/SudokuGenerator/" target="_blank" class="game-card-link">
+                <div class="game-card">
+                    <div class="image-container">
+                        <img src="sudoku.png" alt="Sudoku Game Screenshot">
+                    </div>
+                    <div class="card-content">
+                        <h2>Sudoku Generator</h2>
+                        <p>A classic logic puzzle with a modern twist. Generate unique Sudoku puzzles with multiple difficulty levels, helper features, and a sleek, user-friendly interface.</p>
+                        <span class="play-button">Play Game</span>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h2>Sudoku Generator</h2>
-                    <p>A classic logic puzzle with a modern twist. Generate unique Sudoku puzzles with multiple difficulty levels, helper features, and a sleek, user-friendly interface.</p>
-                    <a href="https://popeye74uk.github.io/SudokuGenerator/" target="_blank" class="play-button">Play Game</a>
-                </div>
-            </div>
+            </a>
 
             <!-- Maze Game Panel -->
-            <div class="game-card">
-                <div class="image-container">
-                    <img src="maze.png" alt="Maze Game Screenshot">
+            <a href="https://popeye74uk.github.io/MazeGenerator/" target="_blank" class="game-card-link">
+                <div class="game-card">
+                    <div class="image-container">
+                        <img src="maze.png" alt="Maze Game Screenshot">
+                    </div>
+                    <div class="card-content">
+                        <h2>Maze Generator</h2>
+                        <p>Get lost in a world of complex mazes. Using various generation algorithms, this game creates endless, challenging mazes for you to solve. Can you find the exit?</p>
+                        <span class="play-button">Play Game</span>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h2>Maze Generator</h2>
-                    <p>Get lost in a world of complex mazes. Using various generation algorithms, this game creates endless, challenging mazes for you to solve. Can you find the exit?</p>
-                    <a href="https://popeye74uk.github.io/MazeGenerator/" target="_blank" class="play-button">Play Game</a>
-                </div>
-            </div>
+            </a>
 
             <!-- Word Search Panel -->
-            <div class="game-card">
-                <div class="image-container">
-                    <img src="wordsearch.png" alt="Word Search Game Screenshot">
+            <a href="https://popeye74uk.github.io/WordSearch/" target="_blank" class="game-card-link">
+                <div class="game-card">
+                    <div class="image-container">
+                        <img src="wordsearch.png" alt="Word Search Game Screenshot">
+                    </div>
+                    <div class="card-content">
+                        <h2>Word Search</h2>
+                        <p>A fun and challenging word search generator. Find themed words in a grid of letters, with multiple difficulty settings and a clean, interactive design.</p>
+                        <span class="play-button">Play Game</span>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h2>Word Search</h2>
-                    <p>A fun and challenging word search generator. Find themed words in a grid of letters, with multiple difficulty settings and a clean, interactive design.</p>
-                    <a href="https://popeye74uk.github.io/WordSearch/" target="_blank" class="play-button">Play Game</a>
-                </div>
-            </div>
+            </a>
         </section>
 
         <section class="about-section">
@@ -289,13 +325,7 @@
     </div>
 
     <footer class="footer">
-        <div class="social-links">
-            <a href="http://mythicalkid.co.uk/" target="_blank" title="My Website"><i class="fas fa-globe"></i></a>
-            <a href="https://github.com/Popeye74UK" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <!-- Add other social links here, for example: -->
-            <!-- <a href="https://www.linkedin.com/in/yourprofile/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a> -->
-        </div>
-        <p>&copy; 2024 Mythical Kid. All Rights Reserved.</p>
+        <p>&copy; 2025 Mythical Kid. All Rights Reserved.</p>
     </footer>
 
 </body>
