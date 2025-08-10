@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Not Found | Mythical Kid</title>
+    
+    <!-- Resized SVG Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%22 y=%2250%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2275%22 font-family=%22Orbitron, sans-serif%22 fill=%22%2300c6ff%22>MK</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #010409;
+            --primary-color: #6a0dad;
+            --secondary-color: #00c6ff;
+            --text-color: #e0e0e0;
+        }
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(to top, #190b28 0%, #010409 40%);
+        }
+        .stars-container {
+            position: absolute; top: 50%; left: 50%; height: 0; width: 0;
+        }
+        .stars, .stars2, .stars3 {
+            position: absolute; left: 0; top: 0; border-radius: 50%; background-color: transparent; animation: rotate-stars linear infinite;
+        }
+        .stars {
+            width: 1px; height: 1px; animation-duration: 400s;
+            box-shadow: 1058px -398px #FFF, 843px -144px #FFF, 1269px 768px #FFF, -450px -109px #FFF, -129px -398px #FFF, 1024px 338px #FFF, 1374px 1000px #FFF, 1318px -1316px #FFF, 1283px 1279px #FFF, -1355px 1238px #FFF, 715px -1232px #FFF, -72px -1106px #FFF, -1176px -505px #FFF, -642px 648px #FFF, -140px 128px #FFF, -1316px -132px #FFF, -114px 1002px #FFF, -90px 102px #FFF, 1302px -1254px #FFF, 755px -120px #FFF, 110px -1134px #FFF, 959px 1202px #FFF;
+        }
+        .stars2 {
+            width: 2px; height: 2px; animation-duration: 300s;
+            box-shadow: 111px -1320px #FFF, -126px 871px #FFF, 1184px -101px #FFF, -47px -132px #FFF, 128px 1018px #FFF, 1022px 147px #FFF, -138px -131px #FFF, -253px -447px #FFF, 115px -401px #FFF, 1032px 1238px #FFF, 29px 1391px #FFF, 808px 87px #FFF, 1253px 803px #FFF, -1331px -1160px #FFF, -243px -1338px #FFF;
+        }
+        .stars3 {
+            width: 3px; height: 3px; animation-duration: 200s;
+            box-shadow: 118px 1056px #FFF, 1076px -270px #FFF, -1221px -1242px #FFF, 856px -1316px #FFF, -177px 1159px #FFF, 34px -949px #FFF, -1363px 1280px #FFF, -329px 1133px #FFF, -392px 1373px #FFF, 1205px -120px #FFF;
+        }
+        @keyframes rotate-stars {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .content {
+            z-index: 10;
+            padding: 2rem;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 30px var(--primary-color);
+            margin: 0;
+        }
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .home-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
+        }
+        .home-button:hover {
+            background: var(--secondary-color);
+            color: var(--background-color);
+            box-shadow: 0 0 25px rgba(0, 198, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="stars-container">
+            <div class="stars"></div>
+            <div class="stars2"></div>
+            <div class="stars3"></div>
+        </div>
+    </div>
+    <div class="content">
+        <h1>404</h1>
+        <h2>Lost in Space?</h2>
+        <p style="margin-bottom: 2.5rem; opacity: 0.7;">The page you're looking for seems to have drifted into a cosmic anomaly.</p>
+        <a href="/" class="home-button">Return to Base</a>
+    </div>
+</body>
+</html>
