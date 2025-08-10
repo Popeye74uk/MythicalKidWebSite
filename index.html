@@ -26,7 +26,6 @@
             --game-image-bg: #121212; 
         }
 
-        /* Added for smooth scrolling on Back to Top button */
         html {
             scroll-behavior: smooth;
         }
@@ -44,7 +43,7 @@
             align-items: center;
         }
         
-        /* --- Rotational Starfield Background --- */
+        /* --- Backgrounds & Overlays --- */
         .background {
             position: fixed;
             top: 0;
@@ -72,32 +71,32 @@
             background-color: transparent; 
             animation: rotate-stars linear infinite;
         }
-
-        /* Layer 1: Small, dense, slow */
-        .stars {
-            width: 1px;
-            height: 1px;
-            animation-duration: 400s;
-            box-shadow: 1058px -398px #FFF, 843px -144px #FFF, 1269px 768px #FFF, -450px -109px #FFF, -129px -398px #FFF, 1024px 338px #FFF, 1374px 1000px #FFF, 1318px -1316px #FFF, 1283px 1279px #FFF, -1355px 1238px #FFF, 715px -1232px #FFF, -72px -1106px #FFF, -1176px -505px #FFF, -642px 648px #FFF, -140px 128px #FFF, -1316px -132px #FFF, -114px 1002px #FFF, -90px 102px #FFF, 1302px -1254px #FFF, 755px -120px #FFF, 110px -1134px #FFF, 959px 1202px #FFF, 621px 135px #FFF, 429px 127px #FFF, 104px 1261px #FFF, -1274px -35px #FFF, 713px -42px #FFF, -100px -107px #FFF, 1152px 90px #FFF, 1083px -138px #FFF, 1500px 800px #FFF, -1450px 600px #FFF, 900px -1550px #FFF, -850px 1500px #FFF, 1421px 1301px #FFF, -220px -1500px #FFF, -1600px 900px #FFF, 1600px -900px #FFF, 300px 1580px #FFF;
-        }
-        /* Layer 2: Medium size, less dense, faster */
-        .stars2 {
-            width: 2px;
-            height: 2px;
-            animation-duration: 300s;
-            box-shadow: 111px -1320px #FFF, -126px 871px #FFF, 1184px -101px #FFF, -47px -132px #FFF, 128px 1018px #FFF, 1022px 147px #FFF, -138px -131px #FFF, -253px -447px #FFF, 115px -401px #FFF, 1032px 1238px #FFF, 29px 1391px #FFF, 808px 87px #FFF, 1253px 803px #FFF, -1331px -1160px #FFF, -243px -1338px #FFF, -1141px -377px #FFF, 1015px 1046px #FFF, -1371px -121px #FFF, 131px 1195px #FFF, 1489px -899px #FFF, -1591px -401px #FFF, 153px 1450px #FFF, -1423px 512px #FFF, -1550px -1450px #FFF, 1621px 1401px #FFF;
-        }
-        /* Layer 3: Largest size, sparse, fastest */
-        .stars3 {
-            width: 3px;
-            height: 3px;
-            animation-duration: 200s;
-            box-shadow: 118px 1056px #FFF, 1076px -270px #FFF, -1221px -1242px #FFF, 856px -1316px #FFF, -177px 1159px #FFF, 34px -949px #FFF, -1363px 1280px #FFF, -329px 1133px #FFF, -392px 1373px #FFF, 1205px -120px #FFF, -1500px 1500px #FFF, 1550px -500px #FFF, 500px 1600px #FFF;
-        }
+        
+        .stars { width: 1px; height: 1px; animation-duration: 400s; box-shadow: 1058px -398px #FFF, 843px -144px #FFF, 1269px 768px #FFF, -450px -109px #FFF, -129px -398px #FFF, 1024px 338px #FFF, 1374px 1000px #FFF, 1318px -1316px #FFF, 1283px 1279px #FFF, -1355px 1238px #FFF, 715px -1232px #FFF, -72px -1106px #FFF, -1176px -505px #FFF, -642px 648px #FFF, -140px 128px #FFF, -1316px -132px #FFF, -114px 1002px #FFF, -90px 102px #FFF, 1302px -1254px #FFF, 755px -120px #FFF, 110px -1134px #FFF, 959px 1202px #FFF, 621px 135px #FFF, 429px 127px #FFF, 104px 1261px #FFF, -1274px -35px #FFF, 713px -42px #FFF, -100px -107px #FFF, 1152px 90px #FFF, 1083px -138px #FFF, 1500px 800px #FFF, -1450px 600px #FFF, 900px -1550px #FFF, -850px 1500px #FFF, 1421px 1301px #FFF, -220px -1500px #FFF, -1600px 900px #FFF, 1600px -900px #FFF, 300px 1580px #FFF; }
+        .stars2 { width: 2px; height: 2px; animation-duration: 300s; box-shadow: 111px -1320px #FFF, -126px 871px #FFF, 1184px -101px #FFF, -47px -132px #FFF, 128px 1018px #FFF, 1022px 147px #FFF, -138px -131px #FFF, -253px -447px #FFF, 115px -401px #FFF, 1032px 1238px #FFF, 29px 1391px #FFF, 808px 87px #FFF, 1253px 803px #FFF, -1331px -1160px #FFF, -243px -1338px #FFF, -1141px -377px #FFF, 1015px 1046px #FFF, -1371px -121px #FFF, 131px 1195px #FFF, 1489px -899px #FFF, -1591px -401px #FFF, 153px 1450px #FFF, -1423px 512px #FFF, -1550px -1450px #FFF, 1621px 1401px #FFF; }
+        .stars3 { width: 3px; height: 3px; animation-duration: 200s; box-shadow: 118px 1056px #FFF, 1076px -270px #FFF, -1221px -1242px #FFF, 856px -1316px #FFF, -177px 1159px #FFF, 34px -949px #FFF, -1363px 1280px #FFF, -329px 1133px #FFF, -392px 1373px #FFF, 1205px -120px #FFF, -1500px 1500px #FFF, 1550px -500px #FFF, 500px 1600px #FFF; }
 
         @keyframes rotate-stars {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        /* Konami Code Canvas Easter Egg */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0;
+            /* MODIFIED: Increased fade-out time */
+            transition: opacity 2s ease-out; 
+            display: none;
+        }
+        #matrix-canvas.active {
+            display: block;
+            opacity: 1;
+            transition: opacity 0.5s ease-in; 
         }
 
         .container {
@@ -109,7 +108,7 @@
             z-index: 40;
         }
 
-        /* Header Section */
+        /* --- Header --- */
         .header {
             text-align: center;
             margin-bottom: 3rem; 
@@ -234,11 +233,11 @@
             box-shadow: 0 0 25px rgba(0, 198, 255, 0.8);
         }
         
-        /* About Section */
+        /* About & Tech Stack Section */
         .about-section {
             text-align: center;
             margin-top: 6rem;
-            padding: 2rem;
+            padding: 2.5rem;
             background: rgba(0,0,0,0.2);
             border-radius: 15px;
         }
@@ -247,6 +246,40 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 2rem;
             margin-bottom: 1rem;
+        }
+        
+        .about-section .tech-stack-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--card-border-color);
+        }
+        .tech-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .tech-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .tech-logo:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+        .tech-logo svg {
+            width: 60px;
+            height: 60px;
+            fill: currentColor;
+        }
+        .tech-logo span {
+            font-weight: bold;
         }
 
         /* Footer Section */
@@ -257,7 +290,6 @@
             opacity: 0.8;
         }
 
-        /* --- NEW: Back to Top Button --- */
         #back-to-top {
             position: fixed;
             bottom: 20px;
@@ -268,7 +300,7 @@
             color: white;
             text-decoration: none;
             border-radius: 50%;
-            display: none; /* Initially hidden */
+            display: none;
             justify-content: center;
             align-items: center;
             font-size: 24px;
@@ -307,6 +339,8 @@
     </style>
 </head>
 <body>
+    <canvas id="matrix-canvas"></canvas>
+
     <div class="background">
         <div class="stars-container">
             <div class="stars"></div>
@@ -322,7 +356,6 @@
         </header>
 
         <section class="game-section">
-            <!-- Sudoku Game Panel -->
             <a href="https://popeye74uk.github.io/SudokuGenerator/" class="game-card-link" aria-label="Play Sudoku Generator">
                 <div class="game-card">
                     <div class="image-container">
@@ -335,8 +368,6 @@
                     </div>
                 </div>
             </a>
-
-            <!-- Maze Game Panel -->
             <a href="https://popeye74uk.github.io/MazeGenerator/" class="game-card-link" aria-label="Play Maze Generator">
                 <div class="game-card">
                     <div class="image-container">
@@ -349,8 +380,6 @@
                     </div>
                 </div>
             </a>
-
-            <!-- Word Search Panel -->
             <a href="https://popeye74uk.github.io/WordSearch/" class="game-card-link" aria-label="Play Word Search">
                 <div class="game-card">
                     <div class="image-container">
@@ -363,8 +392,6 @@
                     </div>
                 </div>
             </a>
-            
-            <!-- 1 to 20 Game Panel -->
             <a href="https://popeye74uk.github.io/1to20Game/" class="game-card-link" aria-label="Play The 1 to 20 Game">
                 <div class="game-card">
                     <div class="image-container">
@@ -381,10 +408,26 @@
 
         <section class="about-section">
             <h2>About Me</h2>
-            <!-- Expanded About Me Text -->
             <p>
                 Hi, I'm a passionate web developer with a love for creating interactive and engaging online experiences. This collection of games is a showcase of my skills in front-end development, built from the ground up using vanilla JavaScript, HTML5, and CSS3. I'm always looking for the next creative challenge and enjoy bringing ideas to life in the browser. I hope you enjoy playing these games as much as I enjoyed building them!
             </p>
+            <div class="tech-stack-section">
+                <h2>Core Technologies</h2>
+                <div class="tech-logos">
+                    <div class="tech-logo">
+                        <svg viewBox="0 0 128 128"><path fill="#E44D26" d="M20.3 112.2l-10-112.2h107.4l-10 112.2-43.7 12.2z"></path><path fill="#F16529" d="M64 115.8l35.8-10 8.6-96.8h-44.4v106.8z"></path><path fill="#EBEBEB" d="M64 43.4h-19l-1.3-15.1h20.3v15.1zm0 20.3h-10.9l.7 7.5 10.2 2.7v16.1l-18.4-5-1.2-14.1h-15.1l2.1 23.3 32.6 9v-25.6z"></path><path fill="#FFF" d="M63.9 43.4v15.1h17.7l-1.6 17.8-16.1 4.3v16.3l18.4-5.1.2-1.9 2-22.3 1.5-14.2h-22.4z"></path></svg>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-logo">
+                        <svg viewBox="0 0 128 128"><path fill="#264DE4" d="M20.3 112.2l-10-112.2h107.4l-10 112.2-43.7 12.2z"></path><path fill="#2965F1" d="M64 115.8l35.8-10 8.6-96.8h-44.4v106.8z"></path><path fill="#EBEBEB" d="M64 43.4h-19l-1.3-15.1h20.3v15.1zm0 20.3h-10.9l.7 7.5 10.2 2.7v16.1l-18.4-5-1.2-14.1h-15.1l2.1 23.3 32.6 9v-25.6z"></path><path fill="#FFF" d="M63.9 43.4v15.1h17.7l-1.6 17.8-16.1 4.3v16.3l18.4-5.1.2-1.9 2-22.3 1.5-14.2h-22.4z"></path></svg>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-logo">
+                        <svg viewBox="0 0 128 128"><path fill="#F0DB4F" d="M0 0h128v128h-128z"></path><path d="M109.5 95.2c-2.4 5.3-7.9 8.4-15.5 8.4-6.4 0-11.2-2.5-14.3-7.5-3.1-5-4.2-11.7-4.2-19.4 0-8.5 1.4-15.3 4.2-20.5 2.8-5.2 7.8-7.8 14.3-7.8s10.3 2.6 12.8 7.8c2.5 5.2 3.8 12.3 3.8 21.2h-15.8c0-4.8-.4-8.6-1.2-11.4-1.3-4.1-3.6-6.1-7.1-6.1-3.4 0-5.8 2.1-7.1 6.3s-1.9 9.5-1.9 15.8c0 6.6.6 11.9 1.9 15.9s3.7 6 7.1 6c3.6 0 6-2 7.4-6s2.1-8.9 2.1-14.7h15.9c0 8.8-1.3 15.8-3.9 21zM57.6 96.1c-2.4 5.3-7.9 8.4-15.5 8.4-6.4 0-11.2-2.5-14.3-7.5-3.1-5-4.2-11.7-4.2-19.4 0-8.5 1.4-15.3 4.2-20.5 2.8-5.2 7.8-7.8 14.3-7.8s10.3 2.6 12.8 7.8c2.5 5.2 3.8 12.3 3.8 21.2h-15.8c0-4.8-.4-8.6-1.2-11.4-1.3-4.1-3.6-6.1-7.1-6.1-3.4 0-5.8 2.1-7.1 6.3s-1.9 9.5-1.9 15.8c0 6.6.6 11.9 1.9 15.9s3.7 6 7.1 6c3.6 0 6-2 7.4-6s2.1-8.9 2.1-14.7h15.9c-.1 8.8-1.4 15.8-4 21z"></path></svg>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -392,18 +435,95 @@
         <p>&copy; 2025 Mythical Kid. All Rights Reserved.</p>
     </footer>
 
-    <!-- Back to Top Button HTML -->
     <a href="#" id="back-to-top" title="Back to Top">&#8679;</a>
 
-    <!-- Back to Top Button JavaScript -->
     <script>
-        const backToTopButton = document.getElementById("back-to-top");
+        document.addEventListener('DOMContentLoaded', (event) => {
+            
+            // --- Back to Top Button ---
+            const backToTopButton = document.getElementById("back-to-top");
+            window.addEventListener("scroll", () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = "flex";
+                } else {
+                    backToTopButton.style.display = "none";
+                }
+            });
 
-        window.addEventListener("scroll", () => {
-            if (window.pageYOffset > 300) { // Show button after scrolling 300px
-                backToTopButton.style.display = "flex";
-            } else {
-                backToTopButton.style.display = "none";
+            // --- Konami Code Canvas "Digital Rain" ---
+            const konamiCode = [
+                'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 
+                'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 
+                'b', 'a'
+            ];
+            let konamiIndex = 0;
+            let matrixInterval;
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext('2d');
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key.toLowerCase() === konamiCode[konamiIndex].toLowerCase()) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        konamiIndex = 0;
+                        activateMatrix();
+                    }
+                } else {
+                    konamiIndex = 0;
+                }
+            });
+
+            function activateMatrix() {
+                if (matrixInterval) return;
+
+                canvas.classList.add('active');
+                
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+                const fontSize = 16;
+                const columns = Math.ceil(canvas.width / fontSize);
+
+                const drops = [];
+                for (let x = 0; x < columns; x++) {
+                    drops[x] = Math.random() * -canvas.height / fontSize; 
+                }
+                
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                function draw() {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    ctx.fillStyle = '#0F0';
+                    ctx.font = `${fontSize}px monospace`;
+
+                    for (let i = 0; i < drops.length; i++) {
+                        const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                            drops[i] = 0;
+                        }
+                        drops[i]++;
+                    }
+                }
+
+                matrixInterval = setInterval(draw, 33);
+
+                // MODIFIED: Start fade-out at 5 seconds, for a 2-second fade duration.
+                setTimeout(() => {
+                    canvas.classList.remove('active');
+                    
+                    setTimeout(() => {
+                        clearInterval(matrixInterval);
+                        matrixInterval = null;
+                        canvas.style.display = 'none';
+                    }, 2000); // Wait for fade-out to complete before stopping everything
+
+                }, 5000); // 7 seconds total (5s rain + 2s fade-out)
             }
         });
     </script>
